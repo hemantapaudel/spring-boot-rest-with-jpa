@@ -4,6 +4,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.ec2.AmazonEC2;
 import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
 import com.amazonaws.services.ec2.model.*;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
@@ -12,10 +13,9 @@ import java.util.Arrays;
 public class SpringRestWithJpaApplication {
 
     public static void main(String[] args) {
-        // SpringApplication.run(SpringRestWithJpaApplication.class, args);
+        SpringApplication.run(SpringRestWithJpaApplication.class, args);
 
-        AmazonEC2 amazonEC2Client = AmazonEC2ClientBuilder.standard()
-                //.withCredentials(new AWSStaticCredentialsProvider(credentials))
+       /* AmazonEC2 amazonEC2Client = AmazonEC2ClientBuilder.standard()
                 .withRegion(Regions.AP_SOUTH_1)
                 .build();
 
@@ -60,7 +60,7 @@ public class SpringRestWithJpaApplication {
                 .withSecurityGroups("java-ec2-security-group");
 
         RunInstancesResult result = amazonEC2Client.runInstances(runInstancesRequest);
-        System.out.println("result ="+result.toString());
+        System.out.println("result ="+result.toString());*/
 
 
 
