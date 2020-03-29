@@ -1,11 +1,10 @@
 package com.myrest.example.application.data.entity;
 
 
-import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 @Entity
-@Table(name="USER_LOGIN")
+@Table(name = "USER_LOGIN")
 public class User {
 
     @Id
@@ -21,10 +20,11 @@ public class User {
     private boolean isEnabled;
 
 
-    public User(){}
+    public User() {
+    }
 
-    public User(int id,String userName, String password, String roles, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
-        this.id=id;
+    public User(int id, String userName, String password, String roles, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled) {
+        this.id = id;
         this.userName = userName;
         this.password = password;
         this.roles = roles;

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public  class MyUserDetails implements UserDetails {
+public class MyUserDetails implements UserDetails {
 
     private String userName;
     private String password;
@@ -23,14 +23,13 @@ public  class MyUserDetails implements UserDetails {
     public MyUserDetails(User user) {
         this.userName = user.getUserName();
         this.password = user.getPassword();
-        this.isAccountNonExpired= user.isAccountNonExpired();
-        this.isAccountNonLocked= user.isAccountNonLocked();
+        this.isAccountNonExpired = user.isAccountNonExpired();
+        this.isAccountNonLocked = user.isAccountNonLocked();
         this.isCredentialsNonExpired = user.isCredentialsNonExpired();
-        this.isEnabled=user.isEnabled();
+        this.isEnabled = user.isEnabled();
         this.authorities = Arrays.stream(user.getRoles().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
-
 
 
     }
@@ -44,7 +43,6 @@ public  class MyUserDetails implements UserDetails {
     public String getPassword() {
         return password;
     }
-
 
 
     @Override
@@ -71,7 +69,6 @@ public  class MyUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
-
 
 
 }

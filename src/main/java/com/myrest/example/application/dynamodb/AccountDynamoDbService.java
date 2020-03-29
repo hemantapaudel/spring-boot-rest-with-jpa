@@ -1,11 +1,9 @@
-package com.myrest.example.application.service;
+package com.myrest.example.application.dynamodb;
 
-
-import com.myrest.example.application.data.entity.Account;
 
 import java.util.List;
 
-public interface AccountService {
+public interface AccountDynamoDbService {
 
     Account create(Account account);
 

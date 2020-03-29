@@ -14,6 +14,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class JpaSpringSecurity extends WebSecurityConfigurerAdapter {
 
 
+    String []allowURls = new String[]{"/","/images","/healthcheck", "/dynamodb/accounts"};
+
+
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -26,16 +29,19 @@ public class JpaSpringSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN","USER")
-                .antMatchers("/").permitAll()
+               .antMatchers("/admin").hasRole("ADMIN")
+                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+               .antMatchers(allowURls).permitAll()
                 .and().formLogin();
+
+
 
         super.configure(http);
     }
 
+
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 

@@ -16,26 +16,25 @@ import java.util.Optional;
 public class MyUserDetailService implements UserDetailsService {
 
 
-
     private UserRepository userRepository;
 
     @Autowired
-    public MyUserDetailService(UserRepository userRepository){
-        this.userRepository=userRepository;
+    public MyUserDetailService(UserRepository userRepository) {
+        this.userRepository = userRepository;
 
-        for (int i=0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
 
-            User user = new User(0,"user"+i, "password"+i, "ROLE_USER,ROLE_ADMIN",
+            User user = new User(0, "user" + i, "password" + i, "ROLE_USER,ROLE_ADMIN",
                     true,
                     true,
                     true,
                     true
-                    );
+            );
             userRepository.save(user);
         }
-        for (int i=100;i<200;i++){
+        for (int i = 100; i < 200; i++) {
 
-            User user = new User(0,"user"+i, "password"+i, "ROLE_USER",
+            User user = new User(0, "user" + i, "password" + i, "ROLE_USER",
                     true,
                     true,
                     true,
@@ -51,7 +50,7 @@ public class MyUserDetailService implements UserDetailsService {
 
         Optional<User> user = userRepository.findByUserName(userName);
 
-        user.orElseThrow(()-> new UsernameNotFoundException("No user details found:"+userName));
+        user.orElseThrow(() -> new UsernameNotFoundException("No user details found:" + userName));
 
         return user.map(MyUserDetails::new).get();
     }
